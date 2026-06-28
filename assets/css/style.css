@@ -1,0 +1,1224 @@
+/* ==========================================================
+   HANAMI PROJECT
+   Landing Page
+   Part 1 — Foundation
+========================================================== */
+
+/* ==========================================================
+   ROOT
+========================================================== */
+
+:root{
+
+    --bg1:#FFF8F6;
+    --bg2:#FFF3F5;
+    --bg3:#FFFDFB;
+
+    --text:#4B3C35;
+
+    --soft:#9A847D;
+
+    --accent:#A88579;
+
+    --paper:rgba(255,255,255,.62);
+
+    --border:rgba(255,255,255,.45);
+
+    --shadow:
+        0 30px 70px rgba(80,55,45,.08);
+
+    --radius:30px;
+
+}
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    font-size:16px;
+
+    scroll-behavior:smooth;
+
+}
+
+html,
+body{
+
+    width:100%;
+
+    min-height:100%;
+
+}
+
+body{
+
+    position:relative;
+
+    overflow-x:hidden;
+
+    font-family:"Inter",sans-serif;
+
+    color:var(--text);
+
+    background:
+
+        linear-gradient(
+            180deg,
+            var(--bg1),
+            var(--bg2),
+            var(--bg3)
+        );
+
+}
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.hero{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:48px 24px;
+
+}
+
+/* ==========================================================
+   BACKGROUND
+========================================================== */
+
+.bg-decoration{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:-5;
+
+}
+
+/* ==========================================================
+   GRADIENT
+========================================================== */
+
+.bg-decoration::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+            circle at 18% 20%,
+            rgba(255,255,255,.95),
+            transparent 42%
+        ),
+
+        radial-gradient(
+            circle at 82% 80%,
+            rgba(255,230,214,.55),
+            transparent 46%
+        ),
+
+        linear-gradient(
+            180deg,
+            var(--bg1),
+            var(--bg2),
+            var(--bg3)
+        );
+
+    animation:
+
+        gradientMove
+        18s ease-in-out infinite;
+
+}
+
+@keyframes gradientMove{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.04);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   BLOBS
+========================================================== */
+
+.blob{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.42;
+
+}
+
+.blob-1{
+
+    width:430px;
+
+    height:430px;
+
+    top:-160px;
+
+    left:-150px;
+
+    background:#FFDCE7;
+
+    animation:blobFloat 18s ease-in-out infinite;
+
+}
+
+.blob-2{
+
+    width:520px;
+
+    height:520px;
+
+    right:-180px;
+
+    bottom:-180px;
+
+    background:#FFE8D8;
+
+    animation:blobFloat 20s ease-in-out infinite reverse;
+
+}
+
+@keyframes blobFloat{
+
+    0%{
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+    }
+
+    50%{
+
+        transform:
+            translate(35px,-25px)
+            scale(1.08);
+
+    }
+
+    100%{
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   SPARKLE
+========================================================== */
+
+.sparkle{
+
+    position:absolute;
+
+    color:#BFA49B;
+
+    font-size:14px;
+
+    opacity:.45;
+
+    animation:
+
+        sparkle 5s ease-in-out infinite;
+
+}
+
+.s1{ top:14%; left:18%; }
+
+.s2{ top:24%; right:14%; }
+
+.s3{ bottom:18%; left:16%; }
+
+.s4{ bottom:15%; right:20%; }
+
+@keyframes sparkle{
+
+    0%,100%{
+
+        opacity:.25;
+
+        transform:scale(.8);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:scale(1.25);
+
+    }
+
+}
+
+/* ==========================================================
+   FLOWERS
+========================================================== */
+
+.flower{
+
+    position:absolute;
+
+    color:#D8C3B5;
+
+    opacity:.25;
+
+    font-size:30px;
+
+}
+
+.flower-1{
+
+    left:48px;
+
+    bottom:46px;
+
+}
+
+.flower-2{
+
+    right:52px;
+
+    top:48px;
+
+}
+
+/* ==========================================================
+   FILM GRAIN
+========================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+
+        radial-gradient(
+            rgba(255,255,255,.08) 1px,
+            transparent 1px
+        );
+
+    background-size:18px 18px;
+
+    opacity:.35;
+
+    pointer-events:none;
+
+}
+
+/* ==========================================================
+   VIGNETTE
+========================================================== */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+            circle,
+            transparent 58%,
+            rgba(0,0,0,.05)
+        );
+
+    pointer-events:none;
+
+}
+
+/* ==========================================================
+   LANDING PAGE
+   Part 2 — Letter Card
+========================================================== */
+
+.letter{
+
+    width:min(560px, 92vw);
+
+    background:
+        rgba(255,253,249,.82);
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid
+        rgba(255,255,255,.55);
+
+    border-radius:32px;
+
+    padding:52px 46px;
+
+    box-shadow:
+        0 25px 70px rgba(90,70,60,.10);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Glow atas */
+
+.letter::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:5px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.9),
+            #DCC7B4,
+            rgba(255,255,255,.9),
+            transparent
+        );
+
+}
+
+/* Glow belakang */
+
+.letter::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+
+            circle at top,
+
+            rgba(255,255,255,.25),
+
+            transparent 60%
+
+        );
+
+    pointer-events:none;
+
+}
+
+/* ==========================================================
+   Letter Typography
+========================================================== */
+
+.letter-top{
+
+    text-align:center;
+
+    color:var(--soft);
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    font-size:.78rem;
+
+    margin-bottom:18px;
+
+}
+
+.letter h2{
+
+    text-align:center;
+
+    font-size:2.5rem;
+
+    margin-bottom:18px;
+
+}
+
+.description{
+
+    max-width:420px;
+
+    margin:0 auto 34px;
+
+    text-align:center;
+
+    line-height:2;
+
+    color:#74685f;
+
+    font-size:1rem;
+
+}
+
+/* ==========================================================
+   Form
+========================================================== */
+
+#loginForm{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+input{
+
+    width:100%;
+
+    padding:17px 18px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(180,160,145,.25);
+
+    background:rgba(255,255,255,.72);
+
+    font-size:.98rem;
+
+    color:var(--text);
+
+    transition:
+
+        .35s;
+
+}
+
+input::placeholder{
+
+    color:#A19389;
+
+}
+
+input:focus{
+
+    outline:none;
+
+    border-color:#B89C88;
+
+    box-shadow:
+
+        0 0 0 5px
+
+        rgba(184,156,136,.12);
+
+}
+
+/* ==========================================================
+   Button
+========================================================== */
+
+#loginForm button{
+
+    margin-top:10px;
+
+    width:100%;
+
+    padding:17px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#927669;
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:
+
+        .35s;
+
+}
+
+#loginForm button:hover{
+
+    transform:translateY(-2px);
+
+    background:#A48374;
+
+}
+
+#loginForm button:active{
+
+    transform:scale(.98);
+
+}
+
+/* ==========================================================
+   Message
+========================================================== */
+
+#message{
+
+    text-align:center;
+
+    margin-top:20px;
+
+    min-height:24px;
+
+    color:#8D7A70;
+
+    font-size:.95rem;
+
+}
+
+/* ==========================================================
+   LANDING PAGE
+   Part 3 — Animation
+========================================================== */
+
+/* ==========================================================
+   INTRO
+========================================================== */
+
+.intro{
+
+    width:min(760px,92%);
+
+    text-align:center;
+
+    animation:
+
+        introReveal
+        1.4s
+        cubic-bezier(.22,.8,.22,1)
+        forwards;
+
+}
+
+@keyframes introReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(40px)
+            scale(.98);
+
+        filter:blur(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
+
+    }
+
+}
+
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
+
+.small-text{
+
+    display:block;
+
+    margin-bottom:24px;
+
+    font-size:.8rem;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    color:var(--soft);
+
+}
+
+.intro h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(3rem,7vw,5.5rem);
+
+    font-weight:600;
+
+    line-height:1.08;
+
+    color:var(--text);
+
+    margin-bottom:24px;
+
+}
+
+.intro p{
+
+    max-width:560px;
+
+    margin:auto;
+
+    font-size:1.05rem;
+
+    line-height:2;
+
+    color:#756760;
+
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+#openBtn{
+
+    margin-top:42px;
+
+    padding:17px 42px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#927669;
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:
+
+        transform .35s,
+
+        box-shadow .35s,
+
+        background .35s;
+
+}
+
+#openBtn:hover{
+
+    transform:
+        translateY(-4px);
+
+    background:#A48374;
+
+    box-shadow:
+
+        0 18px 40px
+        rgba(146,118,105,.22);
+
+}
+
+#openBtn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ==========================================================
+   FADE OUT
+========================================================== */
+
+.fade-out{
+
+    animation:
+
+        introFade .65s ease forwards;
+
+}
+
+@keyframes introFade{
+
+    to{
+
+        opacity:0;
+
+        transform:
+            translateY(-25px);
+
+        filter:blur(10px);
+
+    }
+
+}
+
+/* ==========================================================
+   LETTER APPEAR
+========================================================== */
+
+.letter-show{
+
+    animation:
+
+        letterReveal
+        .9s
+        cubic-bezier(.22,1,.36,1);
+
+}
+
+@keyframes letterReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(50px)
+            scale(.96);
+
+        filter:blur(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
+
+    }
+
+}
+
+/* ==========================================================
+   FLOATING DECORATION
+========================================================== */
+
+.flower{
+
+    animation:
+
+        flowerFloat
+        10s ease-in-out infinite;
+
+}
+
+.flower-2{
+
+    animation-delay:-5s;
+
+}
+
+@keyframes flowerFloat{
+
+    0%{
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-12px)
+            rotate(6deg);
+
+    }
+
+    100%{
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+    }
+
+}
+
+/* ==========================================================
+   LETTER SHINE
+========================================================== */
+
+.letter::before{
+
+    animation:
+
+        shineMove
+        7s linear infinite;
+
+}
+
+@keyframes shineMove{
+
+    0%{
+
+        transform:
+            translateX(-100%);
+
+    }
+
+    100%{
+
+        transform:
+            translateX(100%);
+
+    }
+
+}
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+    }
+
+}
+
+/* ==========================================================
+   LANDING PAGE
+   Part 4 — Responsive
+========================================================== */
+
+/* ==========================================================
+   LAPTOP
+========================================================== */
+
+@media (max-width:1200px){
+
+    .intro{
+
+        width:min(680px,92%);
+
+    }
+
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width:992px){
+
+    .hero{
+
+        padding:40px 24px;
+
+    }
+
+    .intro{
+
+        width:min(620px,94%);
+
+    }
+
+    .intro h1{
+
+        font-size:clamp(2.8rem,8vw,4.5rem);
+
+    }
+
+    .letter{
+
+        width:min(560px,94vw);
+
+        padding:42px 34px;
+
+    }
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:768px){
+
+    .hero{
+
+        padding:32px 20px;
+
+    }
+
+    .small-text{
+
+        font-size:.72rem;
+
+        letter-spacing:3px;
+
+    }
+
+    .intro h1{
+
+        font-size:clamp(2.3rem,11vw,3.8rem);
+
+        line-height:1.15;
+
+        margin-bottom:20px;
+
+    }
+
+    .intro p{
+
+        font-size:.95rem;
+
+        line-height:1.9;
+
+        max-width:320px;
+
+    }
+
+    #openBtn{
+
+        width:100%;
+
+        max-width:260px;
+
+        padding:15px;
+
+        margin-top:34px;
+
+    }
+
+    .letter{
+
+        width:100%;
+
+        max-width:520px;
+
+        padding:34px 24px;
+
+        border-radius:24px;
+
+    }
+
+    .letter-top{
+
+        font-size:.7rem;
+
+        letter-spacing:3px;
+
+    }
+
+    .letter h2{
+
+        font-size:2rem;
+
+    }
+
+    .description{
+
+        font-size:.93rem;
+
+        line-height:1.85;
+
+        margin-bottom:28px;
+
+    }
+
+    input{
+
+        padding:15px;
+
+        font-size:.95rem;
+
+    }
+
+    #loginForm button{
+
+        padding:15px;
+
+        font-size:.95rem;
+
+    }
+
+}
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width:430px){
+
+    .hero{
+
+        padding:24px 18px;
+
+    }
+
+    .intro{
+
+        width:100%;
+
+    }
+
+    .intro h1{
+
+        font-size:2.45rem;
+
+    }
+
+    .intro p{
+
+        max-width:280px;
+
+        font-size:.9rem;
+
+    }
+
+    .letter{
+
+        padding:28px 18px;
+
+        border-radius:22px;
+
+    }
+
+    .letter h2{
+
+        font-size:1.8rem;
+
+    }
+
+    .description{
+
+        font-size:.88rem;
+
+    }
+
+    .flower{
+
+        display:none;
+
+    }
+
+}
+
+/* ==========================================================
+   VERY SMALL DEVICE
+========================================================== */
+
+@media (max-width:360px){
+
+    .hero{
+
+        padding:20px 14px;
+
+    }
+
+    .intro h1{
+
+        font-size:2.1rem;
+
+    }
+
+    .small-text{
+
+        font-size:.65rem;
+
+    }
+
+    .intro p{
+
+        font-size:.85rem;
+
+    }
+
+    .letter{
+
+        padding:22px 16px;
+
+    }
+
+}

@@ -1,0 +1,1807 @@
+/* ==========================================================
+   HANAMI PROJECT
+   Chapter IV • The Little Museum About You
+========================================================== */
+
+/* ==========================================================
+   ROOT
+========================================================== */
+
+:root{
+
+    --bg1:#FFF9F8;
+    --bg2:#FFF4F6;
+    --bg3:#FDECEF;
+
+    --primary:#5C4A47;
+    --secondary:#8F756D;
+    --accent:#CDA6AE;
+
+    --white:#FFFFFF;
+
+    --glass:rgba(255,255,255,.58);
+    --border:rgba(255,255,255,.42);
+
+    --shadow:0 28px 70px rgba(0,0,0,.08);
+
+    --blur:22px;
+
+}
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    width:100%;
+    height:100vh;
+
+    overflow:hidden;
+
+    position:relative;
+
+    font-family:"Inter",sans-serif;
+
+    color:var(--primary);
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--bg1),
+            var(--bg2),
+            var(--bg3)
+        );
+
+    /* CUSTOM CURSOR */
+    cursor:none;
+
+}
+
+/* ==========================================================
+   CUSTOM CURSOR
+========================================================== */
+
+.cursor{
+
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    mix-blend-mode:multiply;
+
+}
+
+.cursor-dot{
+
+    width:8px;
+    height:8px;
+
+    background:var(--accent);
+
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+
+    transition:
+        width .2s ease,
+        height .2s ease,
+        background .2s ease;
+
+}
+
+.cursor-ring{
+
+    width:36px;
+    height:36px;
+
+    border:1.5px solid rgba(205,166,174,.6);
+
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+
+    transition:
+        width .35s ease,
+        height .35s ease,
+        border-color .35s ease,
+        transform .08s linear;
+
+}
+
+body:has(button:hover) .cursor-dot,
+body:has(a:hover) .cursor-dot{
+
+    width:14px;
+    height:14px;
+
+    background:#B98F98;
+
+}
+
+body:has(button:hover) .cursor-ring,
+body:has(a:hover) .cursor-ring{
+
+    width:52px;
+    height:52px;
+
+    border-color:rgba(185,143,152,.8);
+
+}
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+main{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+}
+
+/* ==========================================================
+   BACKGROUND
+========================================================== */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-5;
+
+}
+
+.gradient{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,255,255,.92),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 82% 75%,
+            rgba(255,225,235,.72),
+            transparent 45%
+        ),
+        linear-gradient(
+            180deg,
+            var(--bg1),
+            var(--bg2),
+            var(--bg3)
+        );
+
+}
+
+/* ==========================================================
+   BLOBS
+========================================================== */
+
+.blob{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:.35;
+
+    animation:floatingBlob 18s ease-in-out infinite;
+
+}
+
+.blob1{
+
+    width:380px;
+    height:380px;
+
+    top:-120px;
+    left:-120px;
+
+    background:#FFDCE7;
+
+}
+
+.blob2{
+
+    width:420px;
+    height:420px;
+
+    right:-140px;
+    bottom:-140px;
+
+    background:#FFE7DA;
+
+    animation-delay:5s;
+
+}
+
+@keyframes floatingBlob{
+
+    0%  { transform:translate(0,0); }
+    50% { transform:translate(30px,-25px); }
+    100%{ transform:translate(0,0); }
+
+}
+
+/* ==========================================================
+   PARTICLES
+========================================================== */
+
+.particles{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.4;
+
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+header{
+
+    position:fixed;
+
+    top:40px;
+    left:50px;
+    right:50px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    z-index:100;
+
+}
+
+.chapter span{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:.8rem;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:var(--secondary);
+
+}
+
+.chapter h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2rem;
+
+    font-weight:600;
+
+    color:var(--primary);
+
+}
+
+.progress{
+
+    font-size:.9rem;
+
+    letter-spacing:4px;
+
+    color:var(--secondary);
+
+}
+
+/* ==========================================================
+   INTRO SECTION
+========================================================== */
+
+.intro-section{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:10;
+
+}
+
+.intro-wrapper{
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+#introText{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(2rem,5vw,3.8rem);
+
+    color:var(--primary);
+
+    line-height:1.5;
+
+    opacity:0;
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
+
+}
+
+#introText.showWord{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+#introText.hideWord{
+
+    opacity:0;
+
+    transform:translateY(-15px);
+
+}
+
+/* ==========================================================
+   MUSIC SECTION
+========================================================== */
+
+.music-section{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:10;
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+.music-section.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.music-section.shrink{
+
+    opacity:0;
+
+    transform:scale(.95) translateY(-20px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+
+}
+
+/* ==========================================================
+   MUSIC CARD
+========================================================== */
+
+.music-card{
+
+    text-align:center;
+
+    padding:55px 65px;
+
+    border-radius:32px;
+
+    background:rgba(255,255,255,.6);
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.5);
+
+    box-shadow:0 28px 70px rgba(0,0,0,.08);
+
+    max-width:500px;
+
+    width:90vw;
+
+}
+
+.music-card span{
+
+    display:block;
+
+    font-size:.78rem;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:var(--secondary);
+
+    margin-bottom:14px;
+
+}
+
+.music-card h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2.6rem;
+
+    font-weight:600;
+
+    color:var(--primary);
+
+    margin-bottom:8px;
+
+}
+
+.music-card p{
+
+    color:var(--accent);
+
+    font-size:.95rem;
+
+    margin-bottom:36px;
+
+}
+
+/* ==========================================================
+   PLAY BUTTON
+========================================================== */
+
+#playButton{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:16px 40px;
+
+    border:none;
+
+    border-radius:999px;
+
+    cursor:none;
+
+    color:white;
+
+    font-size:.95rem;
+
+    font-family:"Inter",sans-serif;
+
+    background:linear-gradient(135deg,#CDA7AE,#B98F98);
+
+    box-shadow:0 16px 36px rgba(0,0,0,.12);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+}
+
+#playButton:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 22px 44px rgba(0,0,0,.16);
+
+}
+
+#playButton:disabled{
+
+    opacity:.7;
+
+    cursor:default;
+
+    transform:none;
+
+}
+
+#playButton::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+    top:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.45),
+            transparent
+        );
+
+}
+
+#playButton:hover::before{
+
+    animation:buttonGlow .9s ease;
+
+}
+
+/* ==========================================================
+   MINI PLAYER
+========================================================== */
+
+.mini-player{
+
+    position:fixed;
+
+    left:24px;
+
+    bottom:28px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:14px 20px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.68);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.5);
+
+    box-shadow:0 12px 36px rgba(0,0,0,.1);
+
+    cursor:none;
+
+    z-index:200;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+
+}
+
+.mini-player.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* TOOLTIP */
+
+.mini-player::after{
+
+    content:"Klik untuk pause / play";
+
+    position:absolute;
+
+    bottom:calc(100% + 10px);
+
+    left:50%;
+
+    transform:translateX(-50%) translateY(6px);
+
+    background:rgba(92,74,71,.85);
+
+    color:white;
+
+    font-size:.72rem;
+
+    letter-spacing:.5px;
+
+    white-space:nowrap;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+
+}
+
+.mini-player:hover::after{
+
+    opacity:1;
+
+    transform:translateX(-50%) translateY(0);
+
+}
+
+.disc{
+
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#CDA7AE,#B98F98);
+
+    animation:discSpin 4s linear infinite;
+
+}
+
+.disc.paused{
+
+    animation-play-state:paused;
+
+}
+
+@keyframes discSpin{
+
+    to{ transform:rotate(360deg); }
+
+}
+
+.mini-player h4{
+
+    font-size:.88rem;
+
+    color:var(--primary);
+
+    font-weight:500;
+
+}
+
+.mini-player span{
+
+    font-size:.75rem;
+
+    color:var(--secondary);
+
+}
+
+/* ==========================================================
+   MUSEUM LABEL
+========================================================== */
+
+.museum-label{
+
+    position:fixed;
+
+    left:50px;
+
+    top:130px;
+
+    z-index:100;
+
+    opacity:0;
+
+    transform:translateY(10px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+
+}
+
+.museum-label.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.museum-label span{
+
+    display:block;
+
+    font-size:.72rem;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    color:var(--secondary);
+
+    margin-bottom:6px;
+
+}
+
+.museum-label p{
+
+    font-size:.85rem;
+
+    letter-spacing:3px;
+
+    color:var(--accent);
+
+}
+
+/* ==========================================================
+   PROGRESS BAR
+========================================================== */
+
+.exhibit-progress{
+
+    position:fixed;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+
+    height:3px;
+
+    background:rgba(205,166,174,.15);
+
+    z-index:300;
+
+    opacity:0;
+
+    transition:opacity .5s ease;
+
+}
+
+.exhibit-progress.show{
+
+    opacity:1;
+
+}
+
+.exhibit-progress-bar{
+
+    height:100%;
+
+    width:0%;
+
+    background:linear-gradient(
+        90deg,
+        rgba(205,166,174,.6),
+        rgba(185,143,152,.9)
+    );
+
+    border-radius:0 2px 2px 0;
+
+    transition:width linear;
+
+}
+
+/* ==========================================================
+   FAVORITE SECTION
+========================================================== */
+
+.favorite-section{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:140px 40px 40px;
+
+    z-index:5;
+
+}
+
+/* ==========================================================
+   FAVORITE CARD
+========================================================== */
+
+.favorite-card{
+
+    position:relative;
+
+    width:min(1120px,92vw);
+
+    min-height:600px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:70px;
+
+    padding:55px;
+
+    border-radius:34px;
+
+    background:rgba(255,255,255,.58);
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+    box-shadow:0 25px 70px rgba(0,0,0,.08);
+
+    overflow:hidden;
+
+    opacity:0;
+
+    cursor:none;
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+
+}
+
+.favorite-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    right:-150px;
+    top:-150px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9),
+            transparent 72%
+        );
+
+    filter:blur(35px);
+
+    opacity:.55;
+
+}
+
+.favorite-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-150%;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,.22),
+            transparent
+        );
+
+    transform:rotate(24deg);
+
+    transition:1.2s;
+
+}
+
+.favorite-card:hover::after{
+
+    inset:150%;
+
+}
+
+/* ==========================================================
+   CARD ENTER / EXIT (slide)
+========================================================== */
+
+.favorite-card.enter-from-right{
+
+    opacity:0;
+
+    transform:translateX(80px) scale(.98);
+
+}
+
+.favorite-card.show{
+
+    opacity:1;
+
+    transform:translateX(0) scale(1);
+
+    animation:floatingCard 7s ease-in-out infinite;
+
+}
+
+.favorite-card.exit-to-left{
+
+    opacity:0;
+
+    transform:translateX(-80px) scale(.98);
+
+    transition:
+        opacity .45s ease,
+        transform .45s ease;
+
+}
+
+.favorite-card.hide{
+
+    opacity:0;
+
+    transform:translateY(-30px) scale(.98);
+
+}
+
+/* ==========================================================
+   IMAGE
+========================================================== */
+
+.favorite-image{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    opacity:0;
+
+    transform:translateX(-70px);
+
+    transition:transform .6s ease;
+
+}
+
+.favorite-image img{
+
+    width:100%;
+
+    max-width:420px;
+
+    border-radius:26px;
+
+    object-fit:cover;
+
+    display:block;
+
+    box-shadow:0 25px 55px rgba(0,0,0,.14);
+
+    transition:
+        transform .8s ease,
+        box-shadow .8s ease;
+
+}
+
+.favorite-card:hover .favorite-image{
+
+    transform:translateY(-8px);
+
+}
+
+.favorite-card:hover img{
+
+    transform:scale(1.03);
+
+    box-shadow:0 40px 70px rgba(0,0,0,.15);
+
+}
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.favorite-content{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    opacity:0;
+
+    transform:translateX(70px);
+
+}
+
+/* ==========================================================
+   EXHIBIT NUMBER FLIP
+========================================================== */
+
+.number-flip{
+
+    display:inline-block;
+
+    margin-bottom:15px;
+
+    font-size:.85rem;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:var(--secondary);
+
+    perspective:400px;
+
+}
+
+.number-flip.flip{
+
+    animation:numberFlip .5s ease;
+
+}
+
+@keyframes numberFlip{
+
+    0%  { transform:rotateX(0deg); opacity:1; }
+    45% { transform:rotateX(-90deg); opacity:0; }
+    55% { transform:rotateX(90deg); opacity:0; }
+    100%{ transform:rotateX(0deg); opacity:1; }
+
+}
+
+#favoriteNumber{
+
+    display:inline-block;
+
+    margin-bottom:15px;
+
+    font-size:.85rem;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:var(--secondary);
+
+}
+
+#favoriteTitle{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(3rem,5vw,4.8rem);
+
+    line-height:1.1;
+
+    margin-bottom:12px;
+
+    color:var(--primary);
+
+}
+
+#favoriteSubtitle{
+
+    color:var(--accent);
+
+    margin-bottom:28px;
+
+    font-size:1rem;
+
+    font-weight:500;
+
+}
+
+#favoriteDescription{
+
+    font-size:1.05rem;
+
+    line-height:2;
+
+    color:#6f605b;
+
+}
+
+/* card show animation — image & content */
+
+.favorite-card.show .favorite-image{
+
+    animation:imageReveal .9s ease forwards;
+
+}
+
+.favorite-card.show .favorite-content{
+
+    animation:contentReveal .9s ease .15s forwards;
+
+}
+
+/* ==========================================================
+   SCENE LAYER
+========================================================== */
+
+.scene-layer{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:3;
+
+}
+
+.scene-layer.music::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:240px;
+    height:240px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(205,166,174,.28);
+
+    transform:translate(-50%,-50%);
+
+    animation:musicPulse 3.5s ease infinite;
+
+}
+
+.scene-layer.cat::after{
+
+    content:"🐾";
+
+    position:absolute;
+
+    left:-60px;
+
+    bottom:80px;
+
+    font-size:34px;
+
+    opacity:.45;
+
+    animation:pawWalk 8s linear infinite;
+
+}
+
+.scene-layer.flower{
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,240,246,.18),
+            transparent 70%
+        );
+
+}
+
+.scene-layer.sunset{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,214,170,.12),
+            rgba(255,185,140,.16)
+        );
+
+}
+
+.scene-layer.sunset::before{
+
+    content:"";
+
+    position:absolute;
+
+    right:-120px;
+    top:-120px;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,245,205,.95),
+            transparent 70%
+        );
+
+    filter:blur(35px);
+
+    opacity:.9;
+
+}
+
+.scene-layer.paint{
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,.08),
+            transparent
+        );
+
+}
+
+.scene-layer.paint::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-20%;
+    top:42%;
+
+    width:140%;
+    height:130px;
+
+    background:rgba(255,210,220,.16);
+
+    filter:blur(24px);
+
+    transform:rotate(-8deg);
+
+}
+
+.scene-layer.spotlight::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:650px;
+    height:650px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.48),
+            transparent 72%
+        );
+
+}
+
+/* ==========================================================
+   PETAL
+========================================================== */
+
+.petal{
+
+    position:absolute;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    opacity:.9;
+
+    animation:petalFall linear forwards;
+
+}
+
+/* ==========================================================
+   MUSIC NOTE
+========================================================== */
+
+.music-note{
+
+    position:absolute;
+
+    font-size:26px;
+
+    color:rgba(185,144,151,.8);
+
+    pointer-events:none;
+
+    animation:noteFloat 5s linear forwards;
+
+}
+
+/* ==========================================================
+   REFLECTION
+========================================================== */
+
+.reflection-section{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+.reflection-wrapper{
+
+    max-width:820px;
+
+    text-align:center;
+
+}
+
+#reflectionText{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(2rem,5vw,3.8rem);
+
+    line-height:1.5;
+
+    color:var(--primary);
+
+    opacity:0;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+
+}
+
+#reflectionText.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+#reflectionText.fadeIn{
+
+    animation:fadeInText .8s ease forwards;
+
+}
+
+/* ==========================================================
+   ENDING
+========================================================== */
+
+.ending-section{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+    overflow-y:auto;
+
+}
+
+.ending-wrapper{
+
+    max-width:900px;
+
+    text-align:center;
+
+}
+
+.ending-subtitle{
+
+    display:block;
+
+    margin-bottom:18px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    color:var(--secondary);
+
+    font-size:.8rem;
+
+}
+
+#endingTitle{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(3rem,6vw,5rem);
+
+    margin-bottom:28px;
+
+    opacity:0;
+
+}
+
+#endingDescription{
+
+    font-size:1.08rem;
+
+    line-height:2.1;
+
+    color:#6B5B58;
+
+    max-width:760px;
+
+    margin:auto;
+
+    opacity:0;
+
+}
+
+#nextChapter{
+
+    position:relative;
+
+    overflow:hidden;
+
+    margin-top:55px;
+
+    padding:18px 44px;
+
+    border:none;
+
+    border-radius:999px;
+
+    cursor:none;
+
+    color:white;
+
+    font-size:1rem;
+
+    background:
+        linear-gradient(
+            135deg,
+            #CDA7AE,
+            #B98F98
+        );
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+    opacity:0;
+
+    transition:transform .3s ease, box-shadow .3s ease;
+
+}
+
+#nextChapter:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 28px 48px rgba(0,0,0,.16);
+
+}
+
+#nextChapter::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+    top:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.45),
+            transparent
+        );
+
+}
+
+#nextChapter:hover::before{
+
+    animation:buttonGlow .9s ease;
+
+}
+
+/* ==========================================================
+   PAGE FADE
+========================================================== */
+
+.chapterFade{
+
+    animation:pageFade 1.5s ease forwards;
+
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes floatingCard{
+
+    0%  { transform:translateX(0) translateY(0); }
+    50% { transform:translateX(0) translateY(-8px); }
+    100%{ transform:translateX(0) translateY(0); }
+
+}
+
+@keyframes imageReveal{
+
+    from{ opacity:0; transform:translateX(-70px); }
+    to  { opacity:1; transform:translateX(0); }
+
+}
+
+@keyframes contentReveal{
+
+    from{ opacity:0; transform:translateX(70px); }
+    to  { opacity:1; transform:translateX(0); }
+
+}
+
+@keyframes petalFall{
+
+    0%  { transform:translateY(-120px) rotate(0deg); opacity:0; }
+    10% { opacity:1; }
+    100%{ transform:translateY(120vh) translateX(90px) rotate(360deg); opacity:0; }
+
+}
+
+@keyframes noteFloat{
+
+    from{ transform:translateY(0); opacity:0; }
+    20% { opacity:1; }
+    to  { transform:translateY(-240px) translateX(40px); opacity:0; }
+
+}
+
+@keyframes musicPulse{
+
+    from{ transform:translate(-50%,-50%) scale(.8); opacity:.65; }
+    to  { transform:translate(-50%,-50%) scale(2); opacity:0; }
+
+}
+
+@keyframes pawWalk{
+
+    from{ left:-60px; }
+    to  { left:105%; }
+
+}
+
+@keyframes fadeInText{
+
+    from{ opacity:0; transform:translateY(25px); }
+    to  { opacity:1; transform:translateY(0); }
+
+}
+
+@keyframes buttonGlow{
+
+    from{ left:-120%; }
+    to  { left:120%; }
+
+}
+
+@keyframes pageFade{
+
+    to{ opacity:0; filter:blur(12px); }
+
+}
+
+.showEnding{
+
+    animation:endingReveal .9s ease forwards;
+
+}
+
+@keyframes endingReveal{
+
+    from{ opacity:0; transform:translateY(35px); filter:blur(10px); }
+    to  { opacity:1; transform:translateY(0); filter:blur(0); }
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:900px){
+
+    header{
+
+        top:28px;
+        left:24px;
+        right:24px;
+
+    }
+
+    .chapter h2{ font-size:1.55rem; }
+
+    .museum-label{
+
+        left:24px;
+        top:110px;
+
+    }
+
+    .favorite-card{
+
+        flex-direction:column;
+
+        gap:40px;
+
+        padding:40px;
+
+        text-align:center;
+
+    }
+
+    .favorite-content{ align-items:center; }
+
+    .favorite-image img{ max-width:300px; }
+
+    .mini-player{
+
+        left:18px;
+        right:18px;
+        bottom:18px;
+
+    }
+
+    #endingDescription{
+
+        line-height:1.9;
+
+        font-size:.98rem;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+
+    }
+
+    .chapter h2{
+
+        font-size:1.3rem;
+
+        line-height:1.35;
+
+    }
+
+    .favorite-section{ padding:20px; }
+
+    .favorite-card{
+
+        padding:28px;
+
+        border-radius:22px;
+
+    }
+
+    #favoriteDescription{
+
+        font-size:.95rem;
+
+        line-height:1.8;
+
+    }
+
+    .reflection-section,
+    .ending-section{ padding:24px; }
+
+    #reflectionText{ font-size:2rem; }
+
+    #nextChapter{ width:100%; }
+
+}
+
+@media(hover:none){
+
+    body{ cursor:auto; }
+
+    .cursor{ display:none; }
+
+    button,a{ cursor:pointer; }
+
+}

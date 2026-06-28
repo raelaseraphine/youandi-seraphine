@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebuah Surat</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <div class="bg-decoration">
+
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+
+        <div class="sparkle s1">✦</div>
+        <div class="sparkle s2">✦</div>
+        <div class="sparkle s3">✦</div>
+        <div class="sparkle s4">✦</div>
+
+        <div class="flower flower-1">❀</div>
+        <div class="flower flower-2">❀</div>
+
+    </div>
+
+    <main class="hero">
+
+        <div class="intro" id="intro">
+
+    <span class="small-text reveal delay-1">
+        ✦ Sebuah Surat ✦
+    </span>
+
+    <h1 class="reveal delay-2">
+        Ada sesuatu yang<br>
+        ingin kusampaikan.
+    </h1>
+
+    <p class="reveal delay-3">
+        Jika surat ini memang ditujukan untukmu,
+        silakan buka.
+    </p>
+
+    <button id="openBtn" class="reveal delay-4">
+        Buka Surat
+    </button>
+
+</div>
+
+ 
+
+        <div class="letter hidden" id="letter">
+
+            <div class="letter-top">
+                Untuk seseorang yang spesial
+            </div>
+
+            <h2>💌</h2>
+
+            <p class="description">
+                Sebelum membaca isi surat ini,
+                aku ingin memastikan surat ini sampai
+                kepada orang yang tepat.
+            </p>
+
+            <form id="loginForm">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Nama Lengkap"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="birth"
+                    placeholder="Tanggal Lahir (DD-MM-YY)"
+                    required
+                >
+
+                <button type="submit">
+                    Buka Suratku
+                </button>
+
+            </form>
+
+            <p id="message"></p>
+
+        </div>
+
+    </main>
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>
